@@ -10,13 +10,13 @@
 
         <div class="card-body">
           <div class="row">
-            <div class="col-10">
+            <div class="col-10 col-md-11">
               <app-tabla
                 [items]="personajes"
                 (seleccionarItemEvent)="seleccionarPersonaje($event)">
               </app-tabla>
             </div>
-            <div class="col-2 align-self-center" style="text-align: center">
+            <div class="col-2 col-md-1 align-self-center" style="text-align: center">
               <app-ordenador
                 [items]="personajes"
                 [itemSeleccionado]="personajeSeleccionadoIndex"
