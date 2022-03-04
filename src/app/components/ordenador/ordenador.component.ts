@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
 
 @Component({
   selector: 'app-ordenador',
@@ -7,16 +7,17 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 })
 export class OrdenadorComponent implements OnInit {
 
-  @Input() itemSeleccionado: number | null = null;
+  @ViewChild('divOrdenador') divOrdenador!: ElementRef;
+
+  @Input() itemSeleccionado: number|null = null;
   @Input() items: any[] = [];
   @Output() nuevoItemSeleccionadoEvent = new EventEmitter<number>();
 
-  constructor() { }
+  constructor() {}
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
-  subir( ) {
+  subir() {
     if (this.itemSeleccionado != null && this.itemSeleccionado > 0) {
       const toIndex = this.itemSeleccionado - 1;
 
@@ -28,7 +29,7 @@ export class OrdenadorComponent implements OnInit {
     }
   }
 
-  bajar( ) {
+  bajar() {
     if (this.itemSeleccionado != null && this.itemSeleccionado < (this.items.length - 1)) {
       const toIndex = this.itemSeleccionado + 1;
 

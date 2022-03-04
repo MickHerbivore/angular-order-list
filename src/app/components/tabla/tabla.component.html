@@ -2,29 +2,28 @@
   <table class="table table-bordered table-hover mt-4">
       <thead>
           <tr>
-              <th class="text-center col-2" scope="col">Nombre</th>
-              <th class="text-center col-2" scope="col">Especie</th>
-              <th class="text-center col-2" scope="col">Género</th>
-              <th class="text-center col-2" scope="col">Casa</th>
-              <th class="text-center col-2" scope="col">Magx?</th>
-              <th class="text-center col-2" scope="col">Ascendencia</th>
-              <th class="text-center col-2" scope="col">Estudiante?</th>
-              <th class="text-center col-2" scope="col">Actor/Actriz</th>
+              <th class="text-center col-2" scope="col">Name</th>
+              <th class="text-center col-2" scope="col">Species</th>
+              <th class="text-center col-2" scope="col">Gender</th>
+              <th class="text-center col-2" scope="col">House</th>
+              <th class="text-center col-2" scope="col">Wizard</th>
+              <th class="text-center col-2" scope="col">Ancestry</th>
+              <th class="text-center col-2" scope="col">Student</th>
+              <th class="text-center col-2" scope="col">Actor</th>
           </tr>
       </thead>
-      <tbody>
+      <tbody #tableBody>
           <tr *ngFor="let item of items; let i = index"
             [class]="itemSeleccionado === i ? 'table-info' : ''"
-            (click)="seleccionarItem(i)"
-            (blur)="limpiarItemSeleccionado()">
-              <td class="text-center ">{{ item.name }}</td>
-              <td class="text-center">{{ item.species }}</td>
-              <td class="text-center">{{ item.gender }}</td>
-              <td class="text-center">{{ item.house }}</td>
-              <td class="text-center">{{ item.wizard }}</td>
-              <td class="text-center">{{ item.ancestry }}</td>
-              <td class="text-center">{{ item.hogwartsStudent }}</td>
-              <td class="text-center">{{ item.actor }}</td>
+            (click)="seleccionarItem(i)">
+              <td class="text-center">{{ item.name | titlecase }}</td>
+              <td class="text-center">{{ item.species | titlecase }}</td>
+              <td class="text-center">{{ item.gender | titlecase }}</td>
+              <td class="text-center">{{ item.house | titlecase }}</td>
+              <td class="text-center">{{ item.wizard ? 'Yes' : 'No' }}</td>
+              <td class="text-center">{{ item.ancestry | titlecase }}</td>
+              <td class="text-center">{{ item.hogwartsStudent ? 'Yes' : 'No' }}</td>
+              <td class="text-center">{{ item.actor | titlecase }}</td>
           </tr>
       </tbody>
   </table>

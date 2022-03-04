@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
 
 @Component({
   selector: 'app-tabla',
@@ -7,24 +7,25 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 })
 export class TablaComponent implements OnInit {
 
+  @ViewChild('tableBody') tableBody!: ElementRef;
+
   @Input() items: any[] = [];
-  @Output() seleccionarItemEvent = new EventEmitter<number>();
+  @Output() seleccionarItemEvent = new EventEmitter<number | null>();
 
   itemSeleccionado: number|null = null;
 
-  constructor() { }
+  constructor() {}
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
   seleccionarItem( index: number ) {
     this.itemSeleccionado = index;
-    this.seleccionarItemEvent.emit( index );
+    this.seleccionarItemEvent.emit( this.itemSeleccionado );
   }
 
   limpiarItemSeleccionado() {
     this.itemSeleccionado = null;
-    console.log(this.itemSeleccionado);
+    this.seleccionarItemEvent.emit( this.itemSeleccionado );
   }
 
 }
